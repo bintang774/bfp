@@ -1,0 +1,22 @@
+name: Build binaries
+
+on:
+  workflow_dispatch:
+  watch:
+    types: [started]
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Build
+        run: |
+          chmod 777 build.sh
+          bash build.sh
