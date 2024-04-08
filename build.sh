@@ -1,3 +1,4 @@
+{
 sudo apt-get update -y && sudo apt-get upgrade -y
 sudo apt-get install wget curl zip unzip -y
 
@@ -14,6 +15,7 @@ rm -f ndk
 mv -f $(ls|grep android) ndk
 
 export PATH="$CUR_DIR/ndk:${PATH}"
+} >/dev/null 2>&1
 
 # Stage 3 - Build
 cd jni
