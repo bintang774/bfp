@@ -21,7 +21,7 @@ int main() {
         exit(1);
     }
 
-    char buffer[20];
+    char buffer[10];
     if (fgets(buffer, sizeof(buffer), config_file) == NULL) {
         fprintf(config_file, "2047\n");
         fflush(config_file);
