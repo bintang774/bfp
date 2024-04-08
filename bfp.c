@@ -8,7 +8,9 @@
 #define LED_BRIGHTNESS_FILE "/sys/class/leds/lcd-backlight/brightness"
 
 int main() {
-    system("if pgrep -x led >/dev/null 2>&1; then kill -STOP $(pgrep -x led); fi");
+    if (system("pgrep -x led >/dev/null 2>&1") == 0) {
+        system("kill -STOP $(pgrep -x \"led\"");
+    }
 
     FILE *config_file = fopen(CONFIG_FILE, "a+");
     if (config_file == NULL) {
@@ -21,7 +23,7 @@ int main() {
         exit(1);
     }
 
-    char buffer[10];
+    char buffer[5];
     if (fgets(buffer, sizeof(buffer), config_file) == NULL) {
         fprintf(config_file, "2047\n");
         fflush(config_file);
